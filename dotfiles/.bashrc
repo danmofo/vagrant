@@ -108,9 +108,9 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # User configuration
-export __ROOT=/vagrant
-export APPDIR=$__ROOT/applications/offers
-export SERVERDIR=$__ROOT/server
-export SETUPDIR=$__ROOT/setup
-export TOMCATDIR=$__ROOT/server/apache*
-export APACHEDIR=/etc/apache2/
+__ROOT=/vagrant
+APPDIR=$__ROOT/applications/offers
+SERVERDIR=$__ROOT/server
+SETUPDIR=$__ROOT/setup
+TOMCATDIR=$__ROOT/server/apache*
+APACHEDIR=/etc/apache2/
