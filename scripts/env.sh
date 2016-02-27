@@ -1,13 +1,18 @@
-export HOME=/vagrant
+export __ROOT=/vagrant
 
 # One application source directory
-export APPDIR=$HOME/applications/offers
+export APPDIR=$__ROOT/applications/offers
 
 # Server location
-export SERVERDIR=$HOME/server
+export SERVERDIR=$__ROOT/server
+export SETUPDIR=$__ROOT/setup
 
 # Tomcat location
-export TOMCATDIR=/
+export TOMCATDIR=$__ROOT/server/apache*
 
 # Apache location
 export APACHEDIR=/
+
+# Java
+
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64

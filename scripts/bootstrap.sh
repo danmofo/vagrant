@@ -13,27 +13,28 @@
 # - explore work build scripts
 
 # Setup environment
-sh env.sh
+source /vagrant/scripts/env.sh
+cd $__ROOT
+
+# Add aliases to guest machine
+source dotfiles/.aliases
 
 # Install updates
 sudo apt-get update
 
 # Copy hosts file
-sudo cp guest_hosts /etc/hosts 
-
-# Add aliases to guest machine
-source .aliases
+sudo cp $HOME/hosts/guest_hosts /etc/hosts 
 
 # Download some packages from external sources
-wget -O http://mirror.catn.com/pub/apache/tomcat/tomcat-8/v8.0.32/bin/apache-tomcat-8.0.32.tar.gz $SETUPDIR/tomcat8.tar.gz
-cd $SETUPDIR tar -xvzf tomcat8.tar.gz -C $SERVERDIR
+wget http://mirror.catn.com/pub/apache/tomcat/tomcat-8/v8.0.32/bin/apache-tomcat-8.0.32.tar.gz -O $SETUPDIR/tomcat8.tar.gz
+cd $SETUPDIR
+tar -xvzf tomcat8.tar.gz -C $SERVERDIR
 
 # Install needed packages
 sudo apt-get install -y openjdk-7-jdk
 sudo apt-get install -y maven
 sudo apt-get install -y apache2
 sudo apt-get install -y curl
-
 
 # Enable Apache mods
 sudo a2enmod proxy proxy_http
@@ -45,4 +46,4 @@ sudo ufw --force enable
 
 # Remove default Apache configuration and use our own
 sudo rm /etc/apache2/sites-enabled/*
-sudo ln -s /vagrant/development /etc/apache2/sites-enabled/
+sudo ln -s $HOME/apache2/development /etc/apache2/sites-enabled/
