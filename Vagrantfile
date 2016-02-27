@@ -10,8 +10,10 @@ Vagrant.configure(2) do |config|
     vb.memory = "1024"
   end
   
+  # The path is a git repository / Eclipse workspace, allowing development to be done directly on the VM.
+  # Since this project is a git repository itself, it's assumed all Git repositories are in the same location on the local machine
   config.vm.synced_folder "../spring-tutorial-51", "/vagrant/applications/offers"
 
-  config.vm.provision "shell", path: "bootstrap.sh"
-  config.vm.provision "shell", path: "always.sh", run: "always"
+  config.vm.provision "shell", path: "scripts/bootstrap.sh"
+  config.vm.provision "shell", path: "scripts/always.sh", run: "always"
 end

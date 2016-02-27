@@ -1,0 +1,27 @@
+# General
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias g='git'
+alias gurl='curl --compressed'
+alias h='history'
+alias ips='ifconfig -a | grep -o '\''inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)'\'' | awk '\''{ sub(/inet6? (addr:)? ?/, ""); print }'\'''
+alias j='jobs'
+alias l='ls -lF -G'
+alias sudo='sudo '
+alias svnaddall='svn st | grep '\''^\?'\'' | sed '\''s/^\? *//'\'' | xargs -I% svn add %'
+alias week='date +%V'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+alias ll='ls -l --color=auto'
+alias ls='ls --color=auto'
+alias vi='vim'
+
+# Server restarts
+alias m='sudo service tomcat7 restart'
+alias mm='sudo service apache2 restart'
+
+# Tomcat folder shortcuts
+alias app1='cd $APPDIR`
