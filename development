@@ -1,4 +1,5 @@
 <VirtualHost *:80>
+	 ServerName www.moff.test
      ProxyPass / http://localhost:8080 
      ProxyPassReverse / http://localhost:8080  
 </VirtualHost>

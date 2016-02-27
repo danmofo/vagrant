@@ -15,7 +15,12 @@
 # Install updates
 sudo apt-get update
 
+# Copy hosts file
+cp guest_hosts /etc/hosts 
+
 # Install needed packages
+sudo apt-get install -y openjdk-7-jdk
+sudo apt-get install -y maven
 sudo apt-get install -y apache2
 sudo apt-get install -y tomcat7
 sudo apt-get install -y curl
