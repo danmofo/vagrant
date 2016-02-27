@@ -21,6 +21,7 @@ cp /vagrant/dotfiles/.bashrc ~/.bashrc
 source ~/.bashrc
 
 # Install updates
+echo $env
 echo "Running updates.."
 sudo apt-get update -qq
 
@@ -31,9 +32,10 @@ echo "Coping hosts file to /etc/hosts.."
 sudo cp /vagrant/hosts/guest_hosts /etc/hosts 
 
 # Download some packages from external sources
-wget http://mirror.catn.com/pub/apache/tomcat/tomcat-8/v8.0.32/bin/apache-tomcat-8.0.32.tar.gz -O $SETUPDIR/tomcat8.tar.gz
-cd $SETUPDIR
-tar -xvzf tomcat8.tar.gz -C $SERVERDIR
+echo "Downloading Apache Tomcat 8.."
+wget http://mirror.catn.com/pub/apache/tomcat/tomcat-8/v8.0.32/bin/apache-tomcat-8.0.32.tar.gz -O /vagrant/setup/tomcat8.tar.gz
+cd /vagrant/setup
+tar -xvzf tomcat8.tar.gz -C /vagrant/server
 
 echo "Installing packages.."
 
