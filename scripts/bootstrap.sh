@@ -13,11 +13,14 @@
 # - explore work build scripts
 
 # Setup environment
-source /vagrant/scripts/env.sh
+cp /vagrant/dotfiles/.aliases ~/.bash_aliases
+cp /vagrant/dotfiles/.bashrc ~/.bashrc
+source ~/.bashrc
+
 cd $__ROOT
 
 # Add aliases to guest machine
-source dotfiles/.aliases
+
 
 # Install updates
 sudo apt-get update
@@ -46,4 +49,4 @@ sudo ufw --force enable
 
 # Remove default Apache configuration and use our own
 sudo rm /etc/apache2/sites-enabled/*
-sudo ln -s $HOME/apache2/development /etc/apache2/sites-enabled/
+sudo ln -s $__ROOT/apache2/development $APACHEDIR/sites-enabled/

@@ -24,4 +24,10 @@ alias m='sudo service tomcat7 restart'
 alias mm='sudo service apache2 restart'
 
 # Tomcat folder shortcuts
-alias app1='cd $APPDIR`
+alias app1='cd $APPDIR'
+
+alias tcr='sh $TOMCATDIR/bin/shutdown.sh; sh $TOMCATDIR/bin/startup.sh'
+alias tcs='sh $TOMCATDIR/bin/startup.sh'
+alias tcss='sh $TOMCATDIR/bin/shutdown.sh'
+
+alias weblog='tail -f $TOMCATDIR/logs/catalina.out'
