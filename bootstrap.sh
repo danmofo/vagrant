@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This script runs once when the machine is first created
+# This script runs once the machine is first created
 # 
 # todo:
 # - setup shared folder for local development using git repository
