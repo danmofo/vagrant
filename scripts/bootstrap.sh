@@ -25,8 +25,6 @@ echo $env
 echo "Running updates.."
 sudo apt-get update -qq
 
-cd $__ROOT
-
 # Copy hosts file
 echo "Coping hosts file to /etc/hosts.."
 sudo cp /vagrant/hosts/guest_hosts /etc/hosts 
@@ -37,9 +35,8 @@ wget http://mirror.catn.com/pub/apache/tomcat/tomcat-8/v8.0.32/bin/apache-tomcat
 cd /vagrant/setup
 tar -xvzf tomcat8.tar.gz -C /vagrant/server
 
-echo "Installing packages.."
-
 # Install needed packages
+echo "Installing packages.."
 sudo apt-get install -yqq openjdk-7-jdk
 sudo apt-get install -yqq maven
 sudo apt-get install -yqq apache2
