@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # This script runs once the machine is first created
+# environment variables: https://www.vagrantup.com/docs/provisioning/shell.html
 # 
 # todo:
 # - setup shared folder for local development using git repository
@@ -17,12 +18,21 @@ echo "Running main bootstrap script."
 # Setup environment
 echo "Setting up environment.."
 echo "Copying .bash_aliases to ~/.bash_aliases"
+sudo rm ~/.bash_aliases
 sudo cp /vagrant/dotfiles/.aliases ~/.bash_aliases
 echo "Copying .bashrc to ~/.bashrc"
+sudo rm ~/.bashrc
 sudo cp /vagrant/dotfiles/.bashrc ~/.bashrc
 source ~/.bashrc
 echo "Copying hosts file to /etc/hosts"
 sudo cp /vagrant/hosts/guest_hosts /etc/hosts 
+
+# Create folder structure if it isn't there
+if [ ! -d "/vagrant/setup" ]; then
+	mkdir /vagrant/setup
+	mkdir /vagrant/private
+	mkdir /vagrant/server
+fi
 
 # Install updates
 echo "Running updates.."
@@ -42,10 +52,12 @@ sudo apt-get install -yqq openjdk-7-jdk
 sudo apt-get install -yqq maven
 sudo apt-get install -yqq apache2
 sudo apt-get install -yqq curl
+sudo apt-get install -yqq dos2unix
 
 # Add Java to /usr/bin
 echo "Setting Java version to 1.7.."
-#sudo update-alternatives --config java
+sudo rm /usr/bin/java
+sudo ln -s /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java /usr/bin
 
 
 # Enable Apache mods

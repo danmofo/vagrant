@@ -112,7 +112,7 @@ export __ROOT=/vagrant
 export APPDIR=$__ROOT/applications/offers
 export SERVERDIR=$__ROOT/server
 export SETUPDIR=$__ROOT/setup
-export TOMCATDIR=$__ROOT/server/apache*
+export TOMCATDIR=$SERVERDIR/apache-tomcat-8.0.32
 export APACHEDIR=/etc/apache2/
 
 # Java
