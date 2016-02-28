@@ -18,16 +18,22 @@ echo "Running main bootstrap script."
 # Setup environment
 echo "Setting up environment.."
 echo "Copying .bash_aliases to ~/.bash_aliases"
-sudo rm ~/.bash_aliases
 sudo cp /vagrant/dotfiles/.aliases ~/.bash_aliases
 echo "Copying .bashrc to ~/.bashrc"
 sudo rm ~/.bashrc
 sudo cp /vagrant/dotfiles/.bashrc ~/.bashrc
 source ~/.bashrc
+source ~/.bash_aliases
 echo "Copying hosts file to /etc/hosts"
 sudo cp /vagrant/hosts/guest_hosts /etc/hosts 
 
-# Create folder structure if it isn't there
+# Clear out existing folder structure (since /vagrant/ is shared, it's not cleared each time we destroy the machine)
+# todo: change environment heavily so it's not based out of this shared folder
+sudo rm -rf /vagrant/server
+sudo rm -rf /vagrant/setup
+sudo rm -rf /vagrant/private
+
+# Create a fresh directory structure
 if [ ! -d "/vagrant/setup" ]; then
 	mkdir /vagrant/setup
 	mkdir /vagrant/private
@@ -72,4 +78,4 @@ sudo ufw --force enable
 sudo rm /etc/apache2/sites-enabled/000-default
 sudo ln -s /vagrant/apache2/development /etc/apache2/sites-enabled/
 
-echo "All done!"
+echo "All done! Run /vagrant/scripts/link.sh to link project sources to Tomcat / Apache!"
