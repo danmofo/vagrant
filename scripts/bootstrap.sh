@@ -33,6 +33,8 @@ sudo rm -rf /vagrant/server
 sudo rm -rf /vagrant/setup
 sudo rm -rf /vagrant/private
 
+# /vagrant/applications is created automatically by the folder share!
+
 # Create a fresh directory structure
 if [ ! -d "/vagrant/setup" ]; then
 	mkdir /vagrant/setup
@@ -64,7 +66,6 @@ sudo apt-get install -yqq dos2unix
 echo "Setting Java version to 1.7.."
 sudo rm /usr/bin/java
 sudo ln -s /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java /usr/bin
-
 
 # Enable Apache mods
 sudo a2enmod proxy proxy_http

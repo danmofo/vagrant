@@ -1,8 +1,15 @@
 #!/usr/bin/env bash
 
+# For some reason the environment variables are not kept from bootstrap.sh..I don't know why.
+# Make sure our variables / aliases are available
+source ~/.bash_aliases
+source ~/.bashrc
+
 # Links each application's Java sources to Tomcat's webapps directory
 # as well as configuring each application for use in Tomcat.
 
+# This script should only be ran once, after that everything should be hooked up to Eclipse
+# and changes should be picked up through the shared folders.
 LOCALAPPDIR=/vagrant/applications/offers
 TOMCATAPPDIR=$TOMCATDIR/webapps/offers
 
@@ -16,8 +23,8 @@ fi
 echo "Getting project dependencies from Maven.."
 cd $LOCALAPPDIR
 mvn dependency:copy-dependencies
-sudo ln -s target/dependency $TOMCATAPPDIR/WEB-INF/lib
 
+sudo ln -s target/dependency $TOMCATAPPDIR/WEB-INF/lib
 echo "Dependencies linked to /lib/.."
 
 echo "Linking classes and /WEB-INF/.."
