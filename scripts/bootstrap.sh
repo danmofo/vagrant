@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-# This script runs once the machine is first created
-# environment variables: https://www.vagrantup.com/docs/provisioning/shell.html
+# This script runs once the machine is first created, it may take a while.
 # 
 # todo:
 # - setup shared folder for local development using git repository
@@ -12,8 +11,7 @@
 #   - mysql
 #   - elasticsearch
 # - explore work build scripts
-
-echo "Running main bootstrap script."
+# - environment variables: https://www.vagrantup.com/docs/provisioning/shell.html
 
 # Setup environment
 echo "Setting up environment.."
@@ -22,13 +20,14 @@ sudo cp /vagrant/dotfiles/.aliases ~/.bash_aliases
 echo "Copying .bashrc to ~/.bashrc"
 sudo rm ~/.bashrc
 sudo cp /vagrant/dotfiles/.bashrc ~/.bashrc
-source ~/.bashrc
-source ~/.bash_aliases
+. ~/.bashrc
+. ~/.bash_aliases
 echo "Copying hosts file to /etc/hosts"
 sudo cp /vagrant/hosts/guest_hosts /etc/hosts 
 
 # Clear out existing folder structure (since /vagrant/ is shared, it's not cleared each time we destroy the machine)
 # todo: change environment heavily so it's not based out of this shared folder
+echo "cleaning out older shared folders..."
 sudo rm -rf /vagrant/server
 sudo rm -rf /vagrant/setup
 sudo rm -rf /vagrant/private

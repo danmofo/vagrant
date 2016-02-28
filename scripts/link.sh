@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
 
-# For some reason the environment variables are not kept from bootstrap.sh..I don't know why.
-# Make sure our variables / aliases are available
-source ~/.bash_aliases
-source ~/.bashrc
-
 # Links each application's Java sources to Tomcat's webapps directory
 # as well as configuring each application for use in Tomcat.
 
 # This script should only be ran once, after that everything should be hooked up to Eclipse
 # and changes should be picked up through the shared folders.
+
+# For some reason the environment variables are not kept from bootstrap.sh..I don't know why.
+# Make sure our variables / aliases are available
+sudo cp /vagrant/dotfiles/.aliases $HOME/.bash_aliases
+sudo cp /vagrant/dotfiles/.bashrc $HOME/.bashrc
+. $HOME/.bash_aliases
+. $HOME/.bashrc
+
+echo env | grep tomcat
+
 LOCALAPPDIR=/vagrant/applications/offers
 TOMCATAPPDIR=$TOMCATDIR/webapps/offers
 
