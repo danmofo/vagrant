@@ -23,8 +23,10 @@ Using (only have to do this once)
 Developing
 ---
 
-1. Work directly inside workspace directory.
+1. Work directly inside workspace directory (using Eclipse).
 2. When you want to see your changes, `m` to restart Tomcat, if you've changed Apache configuration, `mm`.
+
+todo: depending on how quick the save/reload cycle is, I may continue running Tomcat directly through Eclipse and only copy when finished
 
 
 

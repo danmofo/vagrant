@@ -1,6 +1,6 @@
-private/
-server/
-setup/
+private/*
+server/*
+setup/*
 # Created by https://www.gitignore.io/api/osx,java,eclipse,node,vagrant,svn,bower,maven,sublimetext
 
 ### OSX ###
